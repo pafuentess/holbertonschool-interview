@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+""" doc """
 
 
 def canUnlockAll(boxes):
+    """ doc """
     keys = boxes[0]
     open_box = []
     for i in range(1, len(boxes)):
