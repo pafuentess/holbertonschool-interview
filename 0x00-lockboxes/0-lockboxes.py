@@ -3,10 +3,11 @@
 
 
 def check_initial_keys(boxes, keys):
-    for key in keys:
-        if key > len(boxes):
-            keys.remove(key)
-    return keys
+    k_temp = []
+    for i in range(len(keys)):
+        if keys[i] <= len(boxes):
+            k_temp.append(keys[i])
+    return (k_temp)
 
 
 def canUnlockAll(boxes):
@@ -17,13 +18,13 @@ def canUnlockAll(boxes):
         return False
     keys = boxes[0]
     keys.append(0)
-    update_keys = check_initial_keys(boxes, keys)
-    for i in keys:
+    updated_keys = check_initial_keys(boxes, keys)
+    for i in updated_keys:
         if i < len(boxes):
             for j in boxes[i]:
-                if j not in keys and j < len(boxes):
-                    keys.append(j)
-    if len(keys) == len(boxes):
+                if j not in updated_keys and j < len(boxes):
+                    updated_keys.append(j)
+    if len(updated_keys) == len(boxes):
         return True
     else:
         return (False)
