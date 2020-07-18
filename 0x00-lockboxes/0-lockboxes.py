@@ -5,7 +5,7 @@
 def check_all_boxes(boxes, keys):
     for box in boxes:
         for key in box:
-            if key == box.index and key not in keys:
+            if key == box.index and key not in keys and key < len(boxes):
                 keys.append(key)
     return keys
 
@@ -20,12 +20,9 @@ def canUnlockAll(boxes):
     keys.append(0)
     update_keys = check_all_boxes(boxes, keys)
     for i in keys:
-        for j in boxes[i]:
-            index = boxes.index(boxes[i])
-            if index == j and j not in update_keys:
-                keys.append(j)
-            else:
-                if j not in keys:
+        if i < len(boxes):
+            for j in boxes[i]:
+                if j not in keys and j < len(boxes):
                     update_keys.append(j)
     if len(update_keys) == len(boxes):
         return True
