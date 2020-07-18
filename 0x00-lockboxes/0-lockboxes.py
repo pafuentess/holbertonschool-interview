@@ -12,7 +12,7 @@ def check_all_boxes(boxes, keys):
 
 def canUnlockAll(boxes):
     """ doc """
-    if boxes == []:
+    if boxes == [] or len(boxes) == 1:
         return True
     keys = boxes[0]
     keys.append(0)
