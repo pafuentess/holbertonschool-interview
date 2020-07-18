@@ -2,11 +2,10 @@
 """ doc """
 
 
-def check_all_boxes(boxes, keys):
-    for box in boxes:
-        for key in box:
-            if key == box.index and key not in keys and key < len(boxes):
-                keys.append(key)
+def check_initial_keys(boxes, keys):
+    for key in keys:
+        if key > len(boxes):
+            keys.remove(key)
     return keys
 
 
@@ -18,13 +17,13 @@ def canUnlockAll(boxes):
         return False
     keys = boxes[0]
     keys.append(0)
-    update_keys = check_all_boxes(boxes, keys)
+    update_keys = check_initial_keys(boxes, keys)
     for i in keys:
         if i < len(boxes):
             for j in boxes[i]:
                 if j not in keys and j < len(boxes):
-                    update_keys.append(j)
-    if len(update_keys) == len(boxes):
+                    keys.append(j)
+    if len(keys) == len(boxes):
         return True
     else:
         return (False)
