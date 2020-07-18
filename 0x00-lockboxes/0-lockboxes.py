@@ -12,6 +12,8 @@ def check_all_boxes(boxes, keys):
 
 def canUnlockAll(boxes):
     """ doc """
+    if boxes == []:
+        return True
     keys = boxes[0]
     keys.append(0)
     update_keys = check_all_boxes(boxes, keys)
