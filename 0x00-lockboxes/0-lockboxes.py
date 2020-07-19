@@ -5,9 +5,8 @@
 def check_initial_keys(boxes, keys):
     k_temp = []
     for i in range(len(keys)):
-        if keys[i] < len(boxes) and keys[i] not in k_temp:
+        if keys[i] <= len(boxes):
             k_temp.append(keys[i])
-    print(k_temp)
     return (k_temp)
 
 
