@@ -2,29 +2,24 @@
 """ doc """
 
 
-def check_initial_keys(boxes, keys):
-    k_temp = []
-    for i in range(len(keys)):
-        if keys[i] <= len(boxes):
-            k_temp.append(keys[i])
-    return (k_temp)
-
-
 def canUnlockAll(boxes):
     """ doc """
-    if boxes == [] or len(boxes) == 1:
+    if len(boxes) == 1:
         return True
-    if len(boxes[0]) == 0:
-        return False
+    status = []
+    for i in boxes:
+        status.append(0)
+    status[0] = 1
     keys = boxes[0]
-    keys.append(0)
-    updated_keys = check_initial_keys(boxes, keys)
-    for i in updated_keys:
+    seek = True
+    for i in keys:
         if i < len(boxes):
-            for j in boxes[i]:
-                if j not in updated_keys and j < len(boxes):
-                    updated_keys.append(j)
-    if len(updated_keys) == len(boxes):
-        return True
-    else:
+            if status[i] == 0:
+                status[i] = 1
+                for j in (boxes[i]):
+                    if j not in keys:
+                        keys.append(j)
+    if 0 in status:
         return (False)
+    else:
+        return (True)
