@@ -4,7 +4,7 @@
 
 def minOperations(n):
     """ doc """
-    if type(n) is int and n > 0:
+    if type(n) is int and n >= 2:
         x = 1
         op = 1
         store_x = 1
