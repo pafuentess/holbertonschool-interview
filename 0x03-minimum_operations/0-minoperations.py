@@ -11,9 +11,11 @@ def minOperations(n):
         while x < n:
             if n % x == 0 and x != store_x:
                 store_x = x
+                x = x + store_x
+                op = op + 2
+            else:
+                x = x + store_x
                 op = op + 1
-            x = x + store_x
-            op = op + 1
         if x == n:
             return op
     else:
