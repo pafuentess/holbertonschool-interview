@@ -42,7 +42,11 @@ int is_palindrome(listint_t **head)
 		current = current->next;
 		i++;
 	}
+
 	j = i - 1;
+
+	if (lenght % 2 != 0)
+		current = current->next;
 	while (j >= 0)
 	{
 		if (store[j] != current->n)
