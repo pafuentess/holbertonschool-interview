@@ -30,7 +30,9 @@ int is_palindrome(listint_t **head)
 	listint_t *current;
 	int lenght = 0, i = 0, j = 0;
 	int store[1024];
-
+	
+	if (*head == NULL)
+		return (1);
 	current = *head;
 	lenght = list_len(*head);
 
