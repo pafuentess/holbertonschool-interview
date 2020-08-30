@@ -18,10 +18,10 @@ try:
         if i % 10 == 0:
             print("File size: {}".format(file_size))
             for key in sorted(status.keys()):
-                if status[key] != 0:
+                if status[key] > 0:
                     print("{}: {}".format(key, status[key]))
 finally:
     print("File size: {}".format(file_size))
     for key in sorted(status.keys()):
-        if status[key] != 0:
+        if status[key] > 0:
             print("{}: {}".format(key, status[key]))
