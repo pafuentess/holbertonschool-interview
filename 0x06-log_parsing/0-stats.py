@@ -14,7 +14,7 @@ try:
             continue
         if split[-2] in status:
             status[split[-2]] = status[split[-2]] + 1
-            file_size = file_size + int(split[-1])
+            file_size = file_size + eval(split[-1])
         if i % 10 == 0:
             print("File size: {}".format(file_size))
             for key in sorted(status.keys()):
