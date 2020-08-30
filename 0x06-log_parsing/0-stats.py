@@ -10,9 +10,9 @@ status = {"200": 0, "301": 0, "400": 0, "401": 0,
 try:
     for i, line in enumerate(sys.stdin, 1):
         split = line.split(" ")
-        if split < 2:
-            continue
         store = split[-2:]
+        if store < 2:
+            continue
         if store[0] in status:
             status[store[0]] = status[store[0]] + 1
             file_size = file_size + int(store[1])
