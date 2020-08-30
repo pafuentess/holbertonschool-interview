@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import sys
+import collections
 
 split = []
 file_size = 0
@@ -18,11 +19,11 @@ try:
             file_size = file_size + int(num2)
         if i % 10 == 0:
             print("File size: {}".format(file_size))
-            for i in status:
-                if status[i] > 0:
-                    print("{}: {}".format(i, status[i]))
+            for key in sorted(status.keys()):
+                if status[key] != 0:
+                    print("{}: {}".format(key, status[key]))                  
 finally:
     print("File size: {}".format(file_size))
-    for i in status:
-        if status[i] > 0:
-            print("{}: {}".format(i, status[i]))
+    for key in sorted(status.keys()):
+        if status[key] != 0:
+            print("{}: {}".format(key, status[key]))
