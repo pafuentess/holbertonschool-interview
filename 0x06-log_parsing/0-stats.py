@@ -12,10 +12,9 @@ try:
         split = line.split(" ")
         if len(split) < 2:
             continue
-        store = split[-2:]
-        if store[0] in status:
-            status[store[0]] = status[store[0]] + 1
-            file_size = file_size + int(store[1])
+        if split[-2] in status:
+            status[split[-2]] = status[split[-2]] + 1
+            file_size = file_size + int(split[-1])
         if i % 10 == 0:
             print("File size: {}".format(file_size))
             for key in sorted(status.keys()):
