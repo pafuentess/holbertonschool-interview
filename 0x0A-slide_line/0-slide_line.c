@@ -71,13 +71,13 @@ void left(int *line, size_t size)
 		if (line[i] > 0 && store > 0)
 		{
 			line[i - store] = line[i];
-			if (store != i)
-				line[i] = 0;
+			line[i] = 0;
 			i = i - store;
 			store = 0;
 		}
 	}
 	store = 0;
+
 	for (i = 0; i < amount; i++)
 	{
 		if (i < amount - 1 && line[i] == line[i + 1])
@@ -98,6 +98,7 @@ void left(int *line, size_t size)
 		else if (line[i] > 0)
 			store += 1;
 	}
+
 }
 
 /**
@@ -116,8 +117,7 @@ int slide_line(int *line, size_t size, int direction)
 	*if (direction != SLIDE_RIGHT && direction != SLIDE_LEFT)
 	*	return (0);
 	*/
-	if (size <= 1)
-		return (0);
+
 	if (direction == 0)
 		left(line, size);
 	if (direction == 1)
