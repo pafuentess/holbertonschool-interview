@@ -111,7 +111,9 @@ void left(int *line, size_t size)
 int slide_line(int *line, size_t size, int direction)
 {
 	if (line == NULL || size == 0)
-		return 0;
+		return (0);
+	if (direction != 0 || direction != 1)
+		return (0);
 	if (direction == 0)
 		left(line, size);
 	if (direction == 1)
