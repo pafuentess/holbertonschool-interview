@@ -8,7 +8,7 @@ if len(sys.argv) != 2:
     exit(1)
 try:
     N = eval(sys.argv[1])
-except (e):
+except Exception:
     print("N must be a number")
     exit(1)
 if (N < 4):
