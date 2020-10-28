@@ -2,7 +2,6 @@
 """ doc """
 
 import sys
-
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
     exit(1)
@@ -14,50 +13,51 @@ except Exception:
 if (N < 4):
     print('N must be at least 4')
     exit(1)
+Grid = [[0]*N for _ in range(N)]
+Nq = [N]
+solution = []
 
-board = [[0]*N for _ in range(N)]
 
-
-def is_attack(i, j):
+def attack(i, j):
     """ doc """
-    for k in range(0, N):
-        if board[i][k] == 1 or board[k][j] == 1:
+    for k in range(N):
+        if Grid[i][k] == 1 or Grid[k][j] == 1:
             return True
-    for k in range(0, N):
-        for z in range(0, N):
+    for k in range(N):
+        for z in range(N):
             if (k + z == i + j) or (k - z == i - j):
-                if board[k][z] == 1:
+                if Grid[k][z] == 1:
                     return True
     return False
 
 
-def N_queen(n):
+def Nqueens(n, x):
     """ doc """
-    if n == 0:
-        return True
-    for i in range(0, N):
-        for j in range(0, N):
-            if (not(is_attack(i, j))) and (board[i][j] != 1):
-                board[i][j] = 1
-                if N_queen(n - 1) is True:
-                    return True
-                board[i][j] = 0
-
+    for i in range(x, N):
+        for j in range(N):
+            if (not(attack(i, j))) and (Grid[i][j] != 1):
+                Grid[i][j] = 1
+                Nq[0] = Nq[0] - 1
+                Nqueens(n - 1, i + 1)
+                if Nq[0] == 0:
+                    position()
+                Grid[i][j] = 0
+                Nq[0] = Nq[0] + 1
     return False
 
 
-def boardReset(N):
+def reset(N):
     """ doc """
     for k in range(N):
         for z in range(N):
-            board[k][z] = 0
+            Grid[k][z] = 0
 
 
-def validate(board, N):
+def validate(N):
     """ doc """
     suma = 0
     store = []
-    for k, i in enumerate(board):
+    for k, i in enumerate(Grid):
         if 1 in i:
             store.append([k, i.index(1)])
             suma += 1
@@ -67,15 +67,12 @@ def validate(board, N):
         return []
 
 
-def control(N):
+def position():
     """ doc """
-    for i in range(N):
-        board[0][i] = 1
-        N_queen(N - 1)
-        solution = validate(board, N)
-        if len(solution) == N:
-            print(solution)
-        boardReset(N)
+    x = validate(N)
+    if len(x) == N and x not in solution:
+        print(x)
+        solution.append(x)
 
 
-control(N)
+Nqueens(N, 0)
