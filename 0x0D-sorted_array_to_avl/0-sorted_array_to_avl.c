@@ -59,6 +59,9 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	avl_t *root;
 
+	if (array == NULL || size == 0)
+		return (NULL);
+
 	root = splice_array(array, 0, size - 1, NULL);
 
 	return (root);
