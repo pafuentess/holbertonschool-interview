@@ -28,4 +28,5 @@ void binary_tree_print(const binary_tree_t *tree);
 int check_order(binary_tree_t *tree, int n, int dir);
 int binary_tree_is_bst(const binary_tree_t *tree);
 size_t binary_tree_height(const binary_tree_t *tree);
-int binary_tree_balance(const binary_tree_t *tree);#endif
+int binary_tree_balance(const binary_tree_t *tree);
+#endif
